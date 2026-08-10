@@ -189,3 +189,23 @@ body {
     padding-top: 205px;
   }
 }
+
+/* Phones: same hierarchy, one notch smaller */
+@media (max-width: 480px) {
+  .post {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .post--latest {
+    font-size: 28px;
+    line-height: 1.25;
+    letter-spacing: -1.2px;
+  }
+
+  .about {
+    font-size: 18px;
+    line-height: 25px;
+    letter-spacing: -0.5px;
+  }
+}
