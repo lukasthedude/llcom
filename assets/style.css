@@ -1,29 +1,10 @@
-/* lukaslau.com */
+/* lukaslau.com — 1:1 replica of the original Bubble design */
 
 :root {
-  color-scheme: light dark;
-
-  --bg: #ffffff;
-  --bg-translucent: rgba(255, 255, 255, 0.8);
-  --text-primary: #1d1d1f;
-  --text-secondary: #6e6e73;
-  --text-tertiary: #a1a1a6;
-  --hairline: rgba(0, 0, 0, 0.1);
-  --link: #0066cc;
-
-  --content-width: 600px;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #000000;
-    --bg-translucent: rgba(0, 0, 0, 0.8);
-    --text-primary: #f5f5f7;
-    --text-secondary: #86868b;
-    --text-tertiary: #6e6e73;
-    --hairline: rgba(255, 255, 255, 0.16);
-    --link: #2997ff;
-  }
+  --black: #000;
+  --gray: rgb(155, 154, 154);
+  --divider: rgb(216, 215, 216);
+  --card-border: rgb(239, 239, 238);
 }
 
 * {
@@ -32,119 +13,104 @@
   box-sizing: border-box;
 }
 
-html {
-  background: var(--bg);
+html,
+body {
+  background: #fff;
 }
 
 body {
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-  font-size: 15px;
-  line-height: 1.6;
-  letter-spacing: -0.011em;
-  color: var(--text-primary);
-  background: var(--bg);
+  color: var(--black);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
 
-.column {
-  max-width: var(--content-width);
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
-/* Header */
+/* Floating header: avatar card + pill nav, fixed top-left */
 
 .site-header {
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 10;
-  background: var(--bg-translucent);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  backdrop-filter: saturate(180%) blur(20px);
-  border-bottom: 1px solid var(--hairline);
-}
-
-.site-header .column {
+  left: 0;
+  z-index: 100;
+  padding: 20px;
   display: flex;
+  flex-direction: row;
   align-items: center;
-  gap: 12px;
-  height: 64px;
+  gap: 20px;
 }
 
 .avatar {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  display: block;
+  width: 112px;
+  height: 112px;
+  padding: 5px;
+  background: #fff;
+  border: 1px solid var(--card-border);
+  border-radius: 100px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 20px 0px;
   cursor: pointer;
-  border: none;
-  background: none;
-  padding: 0;
   flex-shrink: 0;
+  display: block;
 }
 
 .avatar img {
   width: 100%;
   height: 100%;
-  border-radius: 50%;
+  border-radius: 100px;
   display: block;
   object-fit: cover;
 }
 
-.site-name {
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  color: var(--text-primary);
-  text-decoration: none;
-}
-
 .site-nav {
-  margin-left: auto;
   display: flex;
+  flex-direction: row;
   gap: 20px;
+  padding: 10px 20px;
+  background: #fff;
+  border: 3px solid #fff;
+  border-radius: 100px;
+  box-shadow: rgba(103, 103, 102, 0.1) 0px 0px 15px 0px;
 }
 
 .site-nav a {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--text-secondary);
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+  color: var(--gray);
   text-decoration: none;
-  transition: color 0.15s ease;
-}
-
-.site-nav a:hover {
-  color: var(--text-primary);
 }
 
 .site-nav a[aria-current="page"] {
-  color: var(--text-primary);
+  color: var(--black);
 }
 
 /* Feed */
 
 .feed {
-  padding-top: 72px;
+  width: min(450px, calc(100% - 48px));
+  margin: 0 auto 200px;
+  padding-top: 300px;
 }
 
 .post {
-  padding: 28px 0;
-  border-bottom: 1px solid var(--hairline);
-  color: var(--text-secondary);
-}
-
-.post:first-of-type {
-  padding-top: 0;
+  padding: 30px 0 24px;
+  border-bottom: 1px solid var(--divider);
+  color: var(--gray);
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
 }
 
 .post p {
+  max-width: 96%;
+  margin-bottom: 20px;
   overflow-wrap: break-word;
 }
 
 .post a {
-  color: var(--link);
+  color: inherit;
   text-decoration: none;
 }
 
@@ -154,48 +120,61 @@ body {
 
 .post time {
   display: block;
-  margin-top: 10px;
-  font-size: 13px;
-  color: var(--text-tertiary);
+  font-size: 14px;
+  line-height: 17.5px;
+  font-weight: 600;
+  letter-spacing: normal;
+  color: var(--gray);
 }
 
 .post--latest {
-  color: var(--text-primary);
-  font-size: 19px;
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  line-height: 1.45;
+  padding-top: 0;
+  padding-bottom: 30px;
+  color: var(--black);
+  font-size: 34px;
+  line-height: 1.2;
+  letter-spacing: -1.5px;
+}
+
+.post--latest p {
+  max-width: 90%;
+}
+
+.post--pinned {
+  padding-top: 35px;
 }
 
 .pin-label {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  margin-bottom: 8px;
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--text-tertiary);
+  margin-bottom: 14px;
 }
 
 .pin-label svg {
-  width: 12px;
-  height: 12px;
-  fill: currentColor;
+  width: 17px;
+  height: 17px;
+  fill: var(--gray);
+  display: block;
 }
 
 /* About */
 
 .about {
-  padding-top: 72px;
+  width: min(340px, calc(100% - 48px));
+  margin: 0 auto 120px;
+  padding-top: 130px;
+  color: var(--gray);
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 700;
+  letter-spacing: -0.6px;
 }
 
 .about p {
-  margin-bottom: 24px;
+  margin-bottom: 28px;
   overflow-wrap: break-word;
 }
 
 .about a {
-  color: var(--link);
+  color: inherit;
   text-decoration: none;
 }
 
@@ -203,31 +182,10 @@ body {
   text-decoration: underline;
 }
 
-/* Footer */
-
-.site-footer {
-  padding: 96px 0 48px;
-  text-align: center;
-  font-size: 12px;
-  color: var(--text-tertiary);
-}
-
-@media (max-width: 480px) {
-  .site-header .column {
-    height: 56px;
-  }
-
-  .avatar {
-    width: 36px;
-    height: 36px;
-  }
-
-  .feed,
+/* Below ~1024px the centered about column would collide with the
+   fixed header, so it drops below it (matches the original). */
+@media (max-width: 1024px) {
   .about {
-    padding-top: 48px;
-  }
-
-  .post--latest {
-    font-size: 18px;
+    padding-top: 205px;
   }
 }

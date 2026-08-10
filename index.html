@@ -15,30 +15,27 @@
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
   <header class="site-header">
-    <div class="column">
-      <button class="avatar" type="button" data-sound="assets/click.mp3" aria-label="Lukas Lau">
-        <img src="assets/avatar.jpg" alt="Lukas Lau" width="44" height="44">
-      </button>
-      <a class="site-name" href="./">Lukas Lau</a>
-      <nav class="site-nav">
-        <a href="./" aria-current="page">Feed</a>
-        <a href="about/">About</a>
-      </nav>
-    </div>
+    <button class="avatar" type="button" data-sound="assets/click.mp3" aria-label="Lukas Lau">
+      <img src="assets/avatar.jpg" alt="Lukas Lau" width="100" height="100">
+    </button>
+    <nav class="site-nav">
+      <a href="./" aria-current="page">Feed</a>
+      <a href="about/">About</a>
+    </nav>
   </header>
 
-  <main class="column feed">
+  <main class="feed">
     <article class="post post--latest">
       <p>Chainsmokers live at EDC Vegas. On Apple Music. Put this on headphones full blast and you are in the fkn zone!!</p>
       <time datetime="2026-07-09T14:46:30Z">Jul 9, 2026</time>
     </article>
     <article class="post post--pinned">
-      <div class="pin-label"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 9V4h1c.55 0 1-.45 1-1s-.45-1-1-1H7c-.55 0-1 .45-1 1s.45 1 1 1h1v5c0 1.66-1.34 3-3 3v2h5.97v7l1 1 1-1v-7H19v-2c-1.66 0-3-1.34-3-3z"/></svg>Pinned</div>
+      <div class="pin-label"><svg viewBox="0 0 24 24" aria-label="Pinned" role="img"><path d="M16 9V4h1c.55 0 1-.45 1-1s-.45-1-1-1H7c-.55 0-1 .45-1 1s.45 1 1 1h1v5c0 1.66-1.34 3-3 3v2h5.97v7l1 1 1-1v-7H19v-2c-1.66 0-3-1.34-3-3z"/></svg></div>
       <p>This website style is inspired by early Twitter. Status updates with a character constraint. No photos. All imagination. Just like books.</p>
       <time datetime="2024-10-27T15:19:51Z">Oct 27, 2024</time>
     </article>
@@ -627,10 +624,6 @@
       <time datetime="2024-10-26T11:30:16Z">Oct 26, 2024</time>
     </article>
   </main>
-
-  <footer class="site-footer column">
-    <p>lukaslau.com &middot; &copy; 2026 Lukas Lau</p>
-  </footer>
 
   <script src="assets/main.js"></script>
 </body>
