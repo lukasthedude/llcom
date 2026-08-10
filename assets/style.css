@@ -1,0 +1,233 @@
+/* lukaslau.com */
+
+:root {
+  color-scheme: light dark;
+
+  --bg: #ffffff;
+  --bg-translucent: rgba(255, 255, 255, 0.8);
+  --text-primary: #1d1d1f;
+  --text-secondary: #6e6e73;
+  --text-tertiary: #a1a1a6;
+  --hairline: rgba(0, 0, 0, 0.1);
+  --link: #0066cc;
+
+  --content-width: 600px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #000000;
+    --bg-translucent: rgba(0, 0, 0, 0.8);
+    --text-primary: #f5f5f7;
+    --text-secondary: #86868b;
+    --text-tertiary: #6e6e73;
+    --hairline: rgba(255, 255, 255, 0.16);
+    --link: #2997ff;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--bg);
+}
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  letter-spacing: -0.011em;
+  color: var(--text-primary);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.column {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Header */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg-translucent);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.site-header .column {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 64px;
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: block;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: block;
+  object-fit: cover;
+}
+
+.site-name {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.site-nav {
+  margin-left: auto;
+  display: flex;
+  gap: 20px;
+}
+
+.site-nav a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.site-nav a:hover {
+  color: var(--text-primary);
+}
+
+.site-nav a[aria-current="page"] {
+  color: var(--text-primary);
+}
+
+/* Feed */
+
+.feed {
+  padding-top: 72px;
+}
+
+.post {
+  padding: 28px 0;
+  border-bottom: 1px solid var(--hairline);
+  color: var(--text-secondary);
+}
+
+.post:first-of-type {
+  padding-top: 0;
+}
+
+.post p {
+  overflow-wrap: break-word;
+}
+
+.post a {
+  color: var(--link);
+  text-decoration: none;
+}
+
+.post a:hover {
+  text-decoration: underline;
+}
+
+.post time {
+  display: block;
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--text-tertiary);
+}
+
+.post--latest {
+  color: var(--text-primary);
+  font-size: 19px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.45;
+}
+
+.pin-label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-tertiary);
+}
+
+.pin-label svg {
+  width: 12px;
+  height: 12px;
+  fill: currentColor;
+}
+
+/* About */
+
+.about {
+  padding-top: 72px;
+}
+
+.about p {
+  margin-bottom: 24px;
+  overflow-wrap: break-word;
+}
+
+.about a {
+  color: var(--link);
+  text-decoration: none;
+}
+
+.about a:hover {
+  text-decoration: underline;
+}
+
+/* Footer */
+
+.site-footer {
+  padding: 96px 0 48px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
+
+@media (max-width: 480px) {
+  .site-header .column {
+    height: 56px;
+  }
+
+  .avatar {
+    width: 36px;
+    height: 36px;
+  }
+
+  .feed,
+  .about {
+    padding-top: 48px;
+  }
+
+  .post--latest {
+    font-size: 18px;
+  }
+}
