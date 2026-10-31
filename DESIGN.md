@@ -2,7 +2,7 @@
 
 The site wears the look of the OG apps (OG Music, OG Calendar, OG Docs,
 OG Browser): black, white type, quiet greys, glass only where something
-floats. The content is untouched; only `assets/style.css` (and the Our
+floats. The content is untouched; only `assets/style.css`, the font files (and the Our
 Globe pages' inline styles, now replaced by it) changed.
 
 ## Colour
@@ -26,14 +26,20 @@ to black, which is what reads as OG.
 
 ## Type
 
-The system font first (SF on Apple devices, as in the apps), Inter
-elsewhere. Bold for titles, semibold for text, never heavy; tight
-tracking on large sizes.
+Sizes, weights, line heights, tracking and the text column are measured
+from felixhaas.io (which sets Geist); here the face is Inter, self-hosted
+in `assets/fonts` (variable, Latin and Latin Extended subsets, OFL), with
+the system font as fallback. One weight, 500, throughout. Phones switch
+at 539 px, as there.
 
-- Latest post: 40 / 700 / -1.6 (32 on phones)
-- Posts and about: 20 / 600 (18 on phones)
-- Timestamps: 14 / 600, tertiary
-- Our Globe pages: title 40 / 700, section heads 22 / 700, body 17 / 500
+| Role                         | Size / line height | Tracking  |
+|------------------------------|--------------------|-----------|
+| Display (latest post, h1)    | 40 / 48 (30 / 36)  | -0.02em   |
+| Body (posts, about, docs)    | 24 / 33.6 (21 / 29.4) | -0.015em |
+| Small (timestamps, nav, h2)  | 15 / 22 (h2 15 / 16) | -0.01em |
+
+Paragraphs sit 32 px apart (24 on phones); a section head is 64 px below
+the text above it and 12 px above its first line.
 
 No eyebrow labels, no wordmark. Unison Pro stays in the apps, where it
 is only used for album titles.
@@ -45,7 +51,9 @@ is only used for album titles.
 - The avatar sits in a glass ring with a hairline, like OG's floating
   controls over a black page.
 - Hairlines, not borders or shadows, separate posts and sections.
-- Columns stay as they were: feed 450, about 340, documents 680.
+- One text column everywhere: 600 px, or the screen less 72 px when
+  narrower (felixhaas.io's measure). The about column starts below the
+  header until the screen is wide enough (1280 px) for it to clear it.
 
 ## Motion
 

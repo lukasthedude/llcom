@@ -1,5 +1,24 @@
 /* lukaslau.com — in the OG family's look (see DESIGN.md) */
 
+/* Inter, self-hosted (variable, weights 100-900, optical sizes) */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("fonts/inter-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("fonts/inter-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
 /* OG's black, always (as OG Music and og-music.com) */
 :root {
   color-scheme: dark;
@@ -20,6 +39,29 @@
   --quick: 0.12s cubic-bezier(0, 0, 0.58, 1);
   --page: 0.32s cubic-bezier(0.25, 0.1, 0.25, 1);
   --spring: 0.35s cubic-bezier(0.3, 1.25, 0.6, 1);
+
+  /* Type and column, measured from felixhaas.io (Geist there, Inter here):
+     everything at 500; body 24/1.4, display 40/1.2, small 15 */
+  --font: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --body: 24px;
+  --body-lh: 1.4;
+  --body-ls: -0.015em;
+  --display: 40px;
+  --display-lh: 1.2;
+  --display-ls: -0.02em;
+  --small: 15px;
+  --small-lh: 22px;
+  --small-ls: -0.01em;
+  --gap: 32px;
+  --column: min(600px, calc(100% - 72px));
+}
+
+@media (max-width: 539px) {
+  :root {
+    --body: 21px;
+    --display: 30px;
+    --gap: 24px;
+  }
 }
 
 * {
@@ -34,7 +76,9 @@ body {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Helvetica Neue", sans-serif;
+  font-family: var(--font);
+  font-weight: 500;
+  font-optical-sizing: auto;
   color: var(--text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -107,10 +151,10 @@ button:focus-visible {
   display: block;
   padding: 10px 18px;
   border-radius: 100px;
-  font-size: 18px;
-  line-height: 22px;
-  font-weight: 600;
-  letter-spacing: -0.3px;
+  font-size: var(--small);
+  line-height: var(--small-lh);
+  font-weight: 500;
+  letter-spacing: var(--small-ls);
   color: var(--secondary);
   text-decoration: none;
   transition: color var(--quick), background-color var(--quick), opacity var(--quick), transform var(--spring);
@@ -141,56 +185,47 @@ button:focus-visible {
 /* Feed */
 
 .feed {
-  width: min(450px, calc(100% - 48px));
+  width: var(--column);
   margin: 0 auto 200px;
   padding-top: 300px;
 }
 
 .post {
-  padding: 30px 0 24px;
+  padding: var(--gap) 0;
   border-bottom: 1px solid var(--hairline);
   color: var(--secondary);
-  font-size: 20px;
-  line-height: 27px;
-  font-weight: 600;
-  letter-spacing: -0.3px;
+  font-size: var(--body);
+  line-height: var(--body-lh);
+  letter-spacing: var(--body-ls);
 }
 
 .post p {
-  max-width: 96%;
-  margin-bottom: 18px;
+  margin-bottom: 12px;
   overflow-wrap: break-word;
 }
 
 .post time {
   display: block;
-  font-size: 14px;
-  line-height: 17.5px;
-  font-weight: 600;
-  letter-spacing: normal;
+  font-size: var(--small);
+  line-height: var(--small-lh);
+  letter-spacing: var(--small-ls);
   color: var(--tertiary);
 }
 
 .post--latest {
   padding-top: 0;
-  padding-bottom: 32px;
   color: var(--text);
-  font-size: 40px;
-  line-height: 1.15;
-  font-weight: 700;
-  letter-spacing: -1.6px;
+  font-size: var(--display);
+  line-height: var(--display-lh);
+  letter-spacing: var(--display-ls);
 }
 
 .post--latest p {
-  max-width: 90%;
-}
-
-.post--pinned {
-  padding-top: 35px;
+  margin-bottom: 16px;
 }
 
 .pin-label {
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .pin-label svg {
@@ -203,24 +238,22 @@ button:focus-visible {
 /* About */
 
 .about {
-  width: min(340px, calc(100% - 48px));
+  width: var(--column);
   margin: 0 auto 120px;
   padding-top: 130px;
   color: var(--secondary);
-  font-size: 20px;
-  line-height: 28px;
-  font-weight: 600;
-  letter-spacing: -0.5px;
+  font-size: var(--body);
+  line-height: var(--body-lh);
+  letter-spacing: var(--body-ls);
 }
 
 .about p {
-  margin-bottom: 28px;
+  margin-bottom: var(--gap);
   overflow-wrap: break-word;
 }
 
-/* Below ~1024px the centered about column would collide with the
-   fixed header, so it drops below it. */
-@media (max-width: 1024px) {
+/* Until the centred column clears the fixed header, it starts below it */
+@media (max-width: 1279px) {
   .about {
     padding-top: 205px;
   }
@@ -249,43 +282,43 @@ button:focus-visible {
    page and type, one readable column */
 
 .doc {
-  max-width: 680px;
+  width: var(--column);
   margin: 0 auto;
-  padding: 96px 24px 120px;
+  padding: 96px 0 120px;
   color: var(--secondary);
-  font-size: 17px;
-  line-height: 1.6;
-  font-weight: 500;
-  letter-spacing: -0.1px;
+  font-size: var(--body);
+  line-height: var(--body-lh);
+  letter-spacing: var(--body-ls);
 }
 
 .doc h1 {
   color: var(--text);
-  font-size: 40px;
-  line-height: 1.15;
-  font-weight: 700;
-  letter-spacing: -1.6px;
-  margin-bottom: 8px;
+  font-size: var(--display);
+  line-height: var(--display-lh);
+  font-weight: 500;
+  letter-spacing: var(--display-ls);
+  margin-bottom: 12px;
 }
 
 .doc h1 + .muted {
-  margin-bottom: 40px;
+  margin-bottom: 64px;
 }
 
+/* Section heads: small labels, as on felixhaas.io */
 .doc h2 {
   color: var(--text);
-  font-size: 22px;
-  line-height: 1.3;
-  font-weight: 700;
-  letter-spacing: -0.5px;
-  margin: 48px 0 12px;
+  font-size: var(--small);
+  line-height: 16px;
+  font-weight: 500;
+  letter-spacing: var(--small-ls);
+  margin: 32px 0 12px;
   padding-top: 32px;
   border-top: 1px solid var(--hairline);
 }
 
 .doc p,
 .doc ul {
-  margin-bottom: 16px;
+  margin-bottom: var(--gap);
 }
 
 .doc ul {
@@ -294,7 +327,7 @@ button:focus-visible {
 
 .doc li {
   position: relative;
-  padding-left: 20px;
+  padding-left: 24px;
   margin-bottom: 12px;
 }
 
@@ -302,7 +335,7 @@ button:focus-visible {
   content: "";
   position: absolute;
   left: 2px;
-  top: 0.68em;
+  top: 0.6em;
   width: 6px;
   height: 6px;
   border-radius: 6px;
@@ -311,7 +344,7 @@ button:focus-visible {
 
 .doc strong {
   color: var(--text);
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .doc .muted {
@@ -352,36 +385,22 @@ button:focus-visible {
   }
 }
 
-/* Phones: same hierarchy, one notch smaller */
-@media (max-width: 480px) {
+/* Phones: sizes come from the 539px tokens above */
+@media (max-width: 539px) {
   .site-header {
     gap: 12px;
   }
 
-  .post {
-    font-size: 18px;
-    line-height: 24px;
-  }
-
-  .post--latest {
-    font-size: 32px;
-    line-height: 1.18;
-    letter-spacing: -1.2px;
-  }
-
-  .about {
-    font-size: 18px;
-    line-height: 25px;
-    letter-spacing: -0.4px;
-  }
-
   .doc {
     padding-top: 64px;
-    font-size: 16px;
   }
 
-  .doc h1 {
-    font-size: 32px;
-    letter-spacing: -1.2px;
+  .doc h2 {
+    margin-top: 24px;
+    padding-top: 24px;
+  }
+
+  .doc h1 + .muted {
+    margin-bottom: 48px;
   }
 }
