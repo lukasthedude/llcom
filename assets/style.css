@@ -1,10 +1,25 @@
-/* lukaslau.com — 1:1 replica of the original Bubble design */
+/* lukaslau.com — in the OG family's look (see DESIGN.md) */
 
+/* OG's black, always (as OG Music and og-music.com) */
 :root {
-  --black: #000;
-  --gray: rgb(155, 154, 154);
-  --divider: rgb(216, 215, 216);
-  --card-border: rgb(239, 239, 238);
+  color-scheme: dark;
+
+  --bg: #000;
+  --text: #fff;
+  --secondary: rgba(255, 255, 255, 0.6);
+  --tertiary: rgba(255, 255, 255, 0.38);
+  --hairline: rgba(255, 255, 255, 0.08);
+  --underline: rgba(255, 255, 255, 0.5);
+  --hover: rgba(255, 255, 255, 0.06);
+  --selected: rgba(255, 255, 255, 0.11);
+  --glass: rgba(20, 20, 20, 0.72);
+  --shadow: rgba(0, 0, 0, 0.7);
+  --focus: rgba(255, 255, 255, 0.6);
+
+  /* Motion: quick easeOut(0.12), page smooth(0.32), spring (0.35, 0.85) */
+  --quick: 0.12s cubic-bezier(0, 0, 0.58, 1);
+  --page: 0.32s cubic-bezier(0.25, 0.1, 0.25, 1);
+  --spring: 0.35s cubic-bezier(0.3, 1.25, 0.6, 1);
 }
 
 * {
@@ -15,18 +30,31 @@
 
 html,
 body {
-  background: #fff;
+  background: var(--bg);
 }
 
 body {
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-  color: var(--black);
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Helvetica Neue", sans-serif;
+  color: var(--text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  -webkit-tap-highlight-color: transparent;
 }
 
-/* Floating header: avatar card + pill nav, fixed top-left */
+::selection {
+  background: var(--selected);
+  color: var(--text);
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+
+/* Floating header: avatar + pill nav, fixed top-left, like OG's
+   floating capsules over the black page */
 
 .site-header {
   position: fixed;
@@ -37,20 +65,27 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
+}
+
+.avatar,
+.site-nav {
+  background: var(--glass);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid var(--hairline);
+  border-radius: 100px;
+  box-shadow: 0 10px 40px var(--shadow);
 }
 
 .avatar {
   width: 112px;
   height: 112px;
-  padding: 5px;
-  background: #fff;
-  border: 1px solid var(--card-border);
-  border-radius: 100px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 20px 0px;
+  padding: 4px;
   cursor: pointer;
   flex-shrink: 0;
   display: block;
+  transition: transform var(--spring);
 }
 
 .avatar img {
@@ -64,25 +99,43 @@ body {
 .site-nav {
   display: flex;
   flex-direction: row;
-  gap: 20px;
-  padding: 10px 20px;
-  background: #fff;
-  border: 3px solid #fff;
-  border-radius: 100px;
-  box-shadow: rgba(103, 103, 102, 0.1) 0px 0px 15px 0px;
+  gap: 4px;
+  padding: 5px;
 }
 
 .site-nav a {
-  font-size: 20px;
-  line-height: 26px;
-  font-weight: 700;
-  letter-spacing: -0.4px;
-  color: var(--gray);
+  display: block;
+  padding: 10px 18px;
+  border-radius: 100px;
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+  color: var(--secondary);
   text-decoration: none;
+  transition: color var(--quick), background-color var(--quick), opacity var(--quick), transform var(--spring);
+}
+
+.site-nav a:hover {
+  color: var(--text);
+  background: var(--hover);
 }
 
 .site-nav a[aria-current="page"] {
-  color: var(--black);
+  color: var(--text);
+  background: var(--selected);
+}
+
+/* Press: feedback the moment the finger lands, spring back on release */
+.avatar:active {
+  transform: scale(0.95);
+  transition: transform var(--quick);
+}
+
+.site-nav a:active {
+  transform: scale(0.97);
+  opacity: 0.7;
+  transition: transform var(--quick), opacity var(--quick);
 }
 
 /* Feed */
@@ -95,27 +148,18 @@ body {
 
 .post {
   padding: 30px 0 24px;
-  border-bottom: 1px solid var(--divider);
-  color: var(--gray);
+  border-bottom: 1px solid var(--hairline);
+  color: var(--secondary);
   font-size: 20px;
-  line-height: 26px;
-  font-weight: 700;
-  letter-spacing: -0.2px;
+  line-height: 27px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
 }
 
 .post p {
   max-width: 96%;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   overflow-wrap: break-word;
-}
-
-.post a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.post a:hover {
-  text-decoration: underline;
 }
 
 .post time {
@@ -124,16 +168,17 @@ body {
   line-height: 17.5px;
   font-weight: 600;
   letter-spacing: normal;
-  color: var(--gray);
+  color: var(--tertiary);
 }
 
 .post--latest {
   padding-top: 0;
-  padding-bottom: 30px;
-  color: var(--black);
-  font-size: 34px;
-  line-height: 1.2;
-  letter-spacing: -1.5px;
+  padding-bottom: 32px;
+  color: var(--text);
+  font-size: 40px;
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -1.6px;
 }
 
 .post--latest p {
@@ -151,7 +196,7 @@ body {
 .pin-label svg {
   width: 17px;
   height: 17px;
-  fill: var(--gray);
+  fill: var(--tertiary);
   display: block;
 }
 
@@ -161,11 +206,11 @@ body {
   width: min(340px, calc(100% - 48px));
   margin: 0 auto 120px;
   padding-top: 130px;
-  color: var(--gray);
+  color: var(--secondary);
   font-size: 20px;
   line-height: 28px;
-  font-weight: 700;
-  letter-spacing: -0.6px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
 }
 
 .about p {
@@ -173,39 +218,170 @@ body {
   overflow-wrap: break-word;
 }
 
-.about a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.about a:hover {
-  text-decoration: underline;
-}
-
 /* Below ~1024px the centered about column would collide with the
-   fixed header, so it drops below it (matches the original). */
+   fixed header, so it drops below it. */
 @media (max-width: 1024px) {
   .about {
     padding-top: 205px;
   }
 }
 
+/* Links in text: white on the grey; the underline shows on hover */
+
+.post a,
+.about a,
+.doc a {
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: text-decoration-color var(--quick);
+}
+
+.post a:hover,
+.about a:hover,
+.doc a:hover {
+  text-decoration-color: var(--underline);
+}
+
+/* Plain document pages (Our Globe support and privacy): same black
+   page and type, one readable column */
+
+.doc {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 96px 24px 120px;
+  color: var(--secondary);
+  font-size: 17px;
+  line-height: 1.6;
+  font-weight: 500;
+  letter-spacing: -0.1px;
+}
+
+.doc h1 {
+  color: var(--text);
+  font-size: 40px;
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -1.6px;
+  margin-bottom: 8px;
+}
+
+.doc h1 + .muted {
+  margin-bottom: 40px;
+}
+
+.doc h2 {
+  color: var(--text);
+  font-size: 22px;
+  line-height: 1.3;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin: 48px 0 12px;
+  padding-top: 32px;
+  border-top: 1px solid var(--hairline);
+}
+
+.doc p,
+.doc ul {
+  margin-bottom: 16px;
+}
+
+.doc ul {
+  list-style: none;
+}
+
+.doc li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 12px;
+}
+
+.doc li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 0.68em;
+  width: 6px;
+  height: 6px;
+  border-radius: 6px;
+  background: var(--tertiary);
+}
+
+.doc strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.doc .muted {
+  color: var(--tertiary);
+}
+
+/* Calm arrival: the page settles in, nothing bounces */
+
+.feed,
+.about,
+.doc {
+  animation: settle var(--page) both;
+}
+
+.site-header {
+  animation: fade var(--page) both;
+}
+
+@keyframes settle {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
 /* Phones: same hierarchy, one notch smaller */
 @media (max-width: 480px) {
+  .site-header {
+    gap: 12px;
+  }
+
   .post {
     font-size: 18px;
     line-height: 24px;
   }
 
   .post--latest {
-    font-size: 28px;
-    line-height: 1.25;
+    font-size: 32px;
+    line-height: 1.18;
     letter-spacing: -1.2px;
   }
 
   .about {
     font-size: 18px;
     line-height: 25px;
-    letter-spacing: -0.5px;
+    letter-spacing: -0.4px;
+  }
+
+  .doc {
+    padding-top: 64px;
+    font-size: 16px;
+  }
+
+  .doc h1 {
+    font-size: 32px;
+    letter-spacing: -1.2px;
   }
 }
