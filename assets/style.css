@@ -119,8 +119,8 @@ button:focus-visible {
   outline-offset: 3px;
 }
 
-/* Header: avatar + pill nav in OG's capsules, on the text column's left edge
-   (centred on phones); it scrolls away with everything else */
+/* Header: avatar + pill nav in OG's capsules, on the text column's left edge;
+   it scrolls away with everything else */
 
 .site-header {
   view-transition-name: site-header;
@@ -425,7 +425,6 @@ button:focus-visible {
 /* Phones: sizes come from the 539px tokens above */
 @media (max-width: 539px) {
   .site-header {
-    justify-content: center;
     gap: 12px;
   }
 

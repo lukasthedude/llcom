@@ -50,7 +50,7 @@ is only used for album titles.
   the current page sits on a white @ 11% pill.
 - The avatar sits in a glass ring with a hairline, like OG's floating
   controls over a black page. Avatar and nav sit at the top of the page on
-  the text column's left edge, centred on phones (80 px avatar), and scroll
+  the text column's left edge (80 px avatar), and scroll
   away with it; nothing is sticky.
 - Hairlines, not borders or shadows, separate posts and sections.
 - One text column everywhere: 600 px, or the screen less 72 px when
