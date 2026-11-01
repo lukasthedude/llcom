@@ -42,9 +42,9 @@
   --spring: 0.35s cubic-bezier(0.3, 1.25, 0.6, 1);
 
   /* Type and column, measured from felixhaas.io (Geist there, Inter here):
-     everything at 500; body 24/1.4, display 40/1.2, small 15 */
+     everything at 500; body 21/1.4 (24 there), display 40/1.2, small 15 */
   --font: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-  --body: 24px;
+  --body: 21px;
   --body-lh: 1.4;
   --body-ls: -0.015em;
   --display: 40px;
@@ -75,7 +75,6 @@
 
 @media (max-width: 539px) {
   :root {
-    --body: 21px;
     --display: 30px;
     --gap: 24px;
   }

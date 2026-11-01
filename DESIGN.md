@@ -35,7 +35,7 @@ at 539 px, as there.
 | Role                         | Size / line height | Tracking  |
 |------------------------------|--------------------|-----------|
 | Display (h1)                 | 40 / 48 (30 / 36)  | -0.02em   |
-| Body (posts, about, docs)    | 24 / 33.6 (21 / 29.4) | -0.015em |
+| Body (posts, about, docs)    | 21 / 29.4 | -0.015em |
 | Small (timestamps, nav, h2)  | 15 / 22 (h2 15 / 16) | -0.01em |
 
 Paragraphs sit 32 px apart (24 on phones); a section head is 64 px below
