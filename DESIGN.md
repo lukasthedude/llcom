@@ -1,28 +1,28 @@
 # lukaslau.com design
 
 The site wears the look of the OG apps (OG Music, OG Calendar, OG Docs,
-OG Browser): black, white type, quiet greys, glass only where something
+OG Browser): black with white type (white with black by day), quiet greys, glass only where something
 floats. The content is untouched; only `assets/style.css`, the font files (and the Our
 Globe pages' inline styles, now replaced by it) changed.
 
 ## Colour
 
-Black always, as OG Music and og-music.com. Nothing in colour.
+Black by night, white by day, following the device's setting, as the newer
+OG apps do. Nothing in colour.
 
-| Token         | Value            | Use                                 |
-|---------------|------------------|-------------------------------------|
-| `--bg`        | `#000`           | page                                |
-| `--text`      | white            | latest post, headings, about links  |
-| `--secondary` | white @ 60%      | posts and their links, about, body  |
-| `--tertiary`  | white @ 38%      | timestamps, pin, captions           |
-| `--hairline`  | white @ 8%       | dividers, capsule outlines          |
-| `--hover`     | white @ 6%       | hover fill                          |
-| `--selected`  | white @ 11%      | current page in the nav, selection  |
-| `--glass`     | `#141414` @ 72%, blur 24 | avatar and nav capsules     |
+| Token         | Dark             | Light            | Use                                 |
+|---------------|------------------|------------------|-------------------------------------|
+| `--bg`        | `#000`           | `#fff`           | page                                |
+| `--text`      | white            | black            | latest post, headings, about links  |
+| `--secondary` | white @ 60%      | `#6b6b6b`        | posts and their links, about, body  |
+| `--tertiary`  | white @ 38%      | `#999`           | timestamps, pin, captions           |
+| `--hairline`  | white @ 8%       | black @ 10%      | dividers, capsule outlines          |
+| `--hover`     | white @ 6%       | black @ 6%       | hover fill                          |
+| `--selected`  | white @ 11%      | black @ 7.5%     | current page in the nav, selection  |
+| `--glass`     | `#141414` @ 72%  | white @ 72%      | avatar and nav capsules, blur 24    |
 
 These are the OG apps' own values (`MacTheme.swift`, the shared
-`Theme.swift`). The newer apps also have a white day mode; the site keeps
-to black, which is what reads as OG.
+`Theme.swift`). The favicon and share image stay black in both modes.
 
 ## Type
 

@@ -19,9 +19,10 @@
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
-/* OG's black, always (as OG Music and og-music.com) */
+/* OG's black by night, white by day, as the device is set (values from the
+   apps' shared Theme.swift) */
 :root {
-  color-scheme: dark;
+  color-scheme: dark light;
 
   --bg: #000;
   --text: #fff;
@@ -54,6 +55,22 @@
   --small-ls: -0.01em;
   --gap: 32px;
   --column: min(600px, calc(100% - 72px));
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #fff;
+    --text: #000;
+    --secondary: #6b6b6b;
+    --tertiary: #999;
+    --hairline: rgba(0, 0, 0, 0.1);
+    --underline: rgba(0, 0, 0, 0.5);
+    --hover: rgba(0, 0, 0, 0.06);
+    --selected: rgba(0, 0, 0, 0.075);
+    --glass: rgba(255, 255, 255, 0.72);
+    --shadow: rgba(0, 0, 0, 0.16);
+    --focus: rgba(0, 0, 0, 0.6);
+  }
 }
 
 @media (max-width: 539px) {
