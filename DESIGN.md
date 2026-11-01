@@ -64,6 +64,10 @@ From the apps' shared `Motion` set:
 - press: scale 0.95 (avatar) or 0.97 with opacity 0.7 (nav) the moment
   the finger lands, springing back on release; nothing changes state on
   touch-down
+- between pages: the page crossfades (0.24 s), the header holds still and
+  the nav pill slides to the other tab on the spring (0.35 s), with
+  cross-document view transitions; browsers without them load normally
+- each page prefetches the other, so a tab switch does not wait
 - all of it off under `prefers-reduced-motion`
 
 ## Icon

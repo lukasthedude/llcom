@@ -92,6 +92,11 @@ body {
   background: var(--bg);
 }
 
+/* Same centre on every page, whether or not it scrolls */
+html {
+  scrollbar-gutter: stable;
+}
+
 body {
   font-family: var(--font);
   font-weight: 500;
@@ -118,6 +123,7 @@ button:focus-visible {
    page; it scrolls away with everything else */
 
 .site-header {
+  view-transition-name: site-header;
   padding: 40px 20px 0;
   display: flex;
   flex-direction: row;
@@ -162,6 +168,7 @@ button:focus-visible {
 }
 
 .site-nav a {
+  position: relative;
   display: block;
   padding: 10px 18px;
   border-radius: 100px;
@@ -181,6 +188,16 @@ button:focus-visible {
 
 .site-nav a[aria-current="page"] {
   color: var(--text);
+  background: none;
+}
+
+/* The current page's pill, its own element so it can slide between tabs */
+.nav-pill {
+  view-transition-name: nav-pill;
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 100px;
   background: var(--selected);
 }
 
@@ -368,10 +385,6 @@ button:focus-visible {
   animation: settle var(--page) both;
 }
 
-.site-header {
-  animation: fade var(--page) both;
-}
-
 @keyframes settle {
   from {
     opacity: 0;
@@ -379,10 +392,23 @@ button:focus-visible {
   }
 }
 
-@keyframes fade {
-  from {
-    opacity: 0;
+/* Moving between pages: the page crossfades, the header stays put and the
+   pill slides to the other tab on OG's spring. Browsers without this just
+   load the next page and its column settles in as above. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
   }
+}
+
+::view-transition-old(*),
+::view-transition-new(*) {
+  animation-duration: 0.24s;
+}
+
+::view-transition-group(nav-pill) {
+  animation-duration: 0.35s;
+  animation-timing-function: cubic-bezier(0.3, 1.25, 0.6, 1);
 }
 
 @media (prefers-reduced-motion: reduce) {
