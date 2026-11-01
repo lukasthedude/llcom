@@ -12,13 +12,13 @@ Black always, as OG Music and og-music.com. Nothing in colour.
 | Token         | Value            | Use                                 |
 |---------------|------------------|-------------------------------------|
 | `--bg`        | `#000`           | page                                |
-| `--text`      | white            | latest post, headings, links        |
-| `--secondary` | white @ 60%      | posts, about, body text             |
+| `--text`      | white            | latest post, headings, about links  |
+| `--secondary` | white @ 60%      | posts and their links, about, body  |
 | `--tertiary`  | white @ 38%      | timestamps, pin, captions           |
 | `--hairline`  | white @ 8%       | dividers, capsule outlines          |
 | `--hover`     | white @ 6%       | hover fill                          |
 | `--selected`  | white @ 11%      | current page in the nav, selection  |
-| `--glass`     | `#141414` @ 72%, blur 24 | floating avatar and nav     |
+| `--glass`     | `#141414` @ 72%, blur 24 | avatar and nav capsules     |
 
 These are the OG apps' own values (`MacTheme.swift`, the shared
 `Theme.swift`). The newer apps also have a white day mode; the site keeps
@@ -34,7 +34,7 @@ at 539 px, as there.
 
 | Role                         | Size / line height | Tracking  |
 |------------------------------|--------------------|-----------|
-| Display (latest post, h1)    | 40 / 48 (30 / 36)  | -0.02em   |
+| Display (h1)                 | 40 / 48 (30 / 36)  | -0.02em   |
 | Body (posts, about, docs)    | 24 / 33.6 (21 / 29.4) | -0.015em |
 | Small (timestamps, nav, h2)  | 15 / 22 (h2 15 / 16) | -0.01em |
 
@@ -49,11 +49,11 @@ is only used for album titles.
 - Capsules everywhere: the nav is a glass capsule holding capsule links;
   the current page sits on a white @ 11% pill.
 - The avatar sits in a glass ring with a hairline, like OG's floating
-  controls over a black page.
+  controls over a black page. Avatar and nav sit centred at the top of
+  the page (80 px avatar) and scroll away with it; nothing is sticky.
 - Hairlines, not borders or shadows, separate posts and sections.
 - One text column everywhere: 600 px, or the screen less 72 px when
-  narrower (felixhaas.io's measure). The about column starts below the
-  header until the screen is wide enough (1280 px) for it to clear it.
+  narrower (felixhaas.io's measure).
 
 ## Motion
 

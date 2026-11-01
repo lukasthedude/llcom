@@ -97,17 +97,14 @@ button:focus-visible {
   outline-offset: 3px;
 }
 
-/* Floating header: avatar + pill nav, fixed top-left, like OG's
-   floating capsules over the black page */
+/* Header: avatar + pill nav in OG's capsules, centred at the top of the
+   page; it scrolls away with everything else */
 
 .site-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 100;
-  padding: 20px;
+  padding: 40px 20px 0;
   display: flex;
   flex-direction: row;
+  justify-content: center;
   align-items: center;
   gap: 16px;
 }
@@ -123,8 +120,8 @@ button:focus-visible {
 }
 
 .avatar {
-  width: 112px;
-  height: 112px;
+  width: 80px;
+  height: 80px;
   padding: 4px;
   cursor: pointer;
   flex-shrink: 0;
@@ -187,7 +184,7 @@ button:focus-visible {
 .feed {
   width: var(--column);
   margin: 0 auto 200px;
-  padding-top: 300px;
+  padding-top: 64px;
 }
 
 .post {
@@ -215,13 +212,6 @@ button:focus-visible {
 .post--latest {
   padding-top: 0;
   color: var(--text);
-  font-size: var(--display);
-  line-height: var(--display-lh);
-  letter-spacing: var(--display-ls);
-}
-
-.post--latest p {
-  margin-bottom: 16px;
 }
 
 .pin-label {
@@ -240,7 +230,7 @@ button:focus-visible {
 .about {
   width: var(--column);
   margin: 0 auto 120px;
-  padding-top: 130px;
+  padding-top: 64px;
   color: var(--secondary);
   font-size: var(--body);
   line-height: var(--body-lh);
@@ -252,19 +242,21 @@ button:focus-visible {
   overflow-wrap: break-word;
 }
 
-/* Until the centred column clears the fixed header, it starts below it */
-@media (max-width: 1279px) {
-  .about {
-    padding-top: 205px;
-  }
+/* Links in text: white on the grey (the feed's take the post's colour);
+   the underline shows on hover */
+
+.about a,
+.doc a {
+  color: var(--text);
 }
 
-/* Links in text: white on the grey; the underline shows on hover */
+.post a {
+  color: inherit;
+}
 
 .post a,
 .about a,
 .doc a {
-  color: var(--text);
   text-decoration: underline;
   text-decoration-color: transparent;
   text-decoration-thickness: 1px;
